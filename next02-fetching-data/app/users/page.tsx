@@ -14,17 +14,14 @@ export default async function UsersPage() {
   const content = (
     <section>
       <h2>
-        <Link href="/">Back to Home</Link>
+        <Link href="/" className="text-blue-500">Back to Home</Link>
       </h2>
       <br />
       {users.map((user) => {
         return (
-          <>
-            <p key={user.id}>
-              <Link href={`/users/${user.id}`}>{user.name}</Link>
-            </p>
-            <br />
-          </>
+          <p key={user.id} className="mb-5">
+            <Link href={`/users/${user.id}`}>{user.name}</Link>
+          </p>
         );
       })}
     </section>
