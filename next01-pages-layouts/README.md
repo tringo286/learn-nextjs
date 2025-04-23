@@ -2,7 +2,32 @@
 
 This project is part of my journey in learning **Next.js**, starting with understanding the App Router system, building basic layouts, and working with page-level components.
 
-## 1. Folder = Route
+## 1. Routing System and App Structure.
+
+### 📄 Pages Router (Old Way)
+
+- Based on the `pages/` directory.
+- **File = Route** (e.g., `pages/about.js` becomes `/about`)
+- Data fetching handled via:
+  - `getStaticProps`
+  - `getServerSideProps`
+  - `getStaticPaths`
+- No support for layouts or nested routes natively.
+- Simple and great for many use cases.
+
+### 🧩 App Router (New Way)
+
+- Based on the `app/` directory.
+- Supports:
+  - Nested layouts
+  - Server & client components
+  - Loading, error, not-found UI per route
+- Data fetching is done using:
+  - `fetch()` directly in components (RSC)
+  - `generateStaticParams` (like `getStaticPaths`)
+- Much more flexible, especially for complex UIs.
+
+## 2. Folder = Route
 
 - Each folder inside the app/ directory represents a part of your URL path.
 
@@ -25,7 +50,7 @@ app/
 
 - /blog/my-first-post → app/blog/[slug]/page.tsx
 
-## 2. Layouts in Next.js (`layout.tsx`)
+## 3. Layouts in Next.js (`layout.tsx`)
 
 - Layouts (`layout.tsx`) wrap **every route** under the folder they're placed in.
 - `app/layout.tsx` is the **root layout**.
@@ -64,7 +89,7 @@ export default function RootLayout({ children }) {
 
 - page.tsx defines the route content for the specific path. For example, app/about/page.tsx is served at /about.
 
-## 3. Pages in Next.js (`page.tsx`)
+## 4. Pages in Next.js (`page.tsx`)
 
 - A `page.tsx` file is used to define a **route** in your app.
 - Any file named `page.tsx` inside the `app` directory becomes a **route endpoint**.
