@@ -5,11 +5,12 @@ In this lesson, the focus is on understanding how to work with async server comp
 ## Notes
 
 ### Server Components & Async Data
+
 All the data-fetching logic lives inside the lib folder. Each file (`getAllUsers.ts`, `getUser.ts`, `getUserPosts.ts`) uses the native fetch API to retrieve data from a placeholder API. These functions are then used in server components to fetch and render content.
 
 ### Suspense for Async UI
-In the page.tsx of the [userId] route, instead of fetching both user and posts data in parallel using Promise.all, I used React’s Suspense to handle the posts asynchronously:
 
+In the page.tsx of the [userId] route, instead of fetching both user and posts data in parallel using Promise.all, I used React’s Suspense to handle the posts asynchronously:
 
 ```tsx
 const userData: Promise<User> = getUser(userId);
@@ -28,9 +29,15 @@ return (
   </>
 );
 ```
+
 This allowed the user details to render immediately, while the posts are loaded lazily with a fallback.
 
+### Type Definitions:
+
+I used a types.d.ts file to define the types used throughout the project, ensuring type safety and better developer experience:
+
 ### Summary
+
 This project helped me get comfortable with:
 
 - Using async functions directly in server components
