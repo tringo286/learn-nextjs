@@ -27,28 +27,52 @@ This project is part of my journey in learning **Next.js**, starting with unders
   - `generateStaticParams` (like `getStaticPaths`)
 - Much more flexible, especially for complex UIs.
 
-## 2. Folder = Route
+## 2. Segment in Next.js App Router
 
-- Each folder inside the app/ directory represents a part of your URL path.
+A segment is basically a folder in your /app directory that represents a part of your URL path.
 
-```css
-app/
-├── about/
-│   └── page.tsx
-├── blog/
-│   ├── page.tsx
-│   └── [slug]/
-│       └── page.tsx
-└── layout.tsx
+#### Example structure:
+
+```bash
+/app
+  /dashboard
+    page.tsx         → Renders at /dashboard
+  /dashboard/settings
+    page.tsx         → Renders at /dashboard/settings
+  /about
+    page.tsx         → Renders at /about
 ```
 
-**Results in these routes:**
+Each folder like dashboard, settings, about is a segment, and it controls a portion of the route.
 
-- /about → app/about/page.tsx
+### 2.1 Segment-Level Features
 
-- /blog → app/blog/page.tsx
+Within each segment, you can define files that control rendering, behavior, and layout for that level.
 
-- /blog/my-first-post → app/blog/[slug]/page.tsx
+| File            | Purpose                                                              |
+| --------------- | -------------------------------------------------------------------- |
+| `page.tsx`      | Main component rendered at that route segment (`/dashboard`)         |
+| `layout.tsx`    | Wraps all child segments (like a shared layout, nav, etc.)           |
+| `template.tsx`  | Like layout, but resets on navigation (good for modals, transitions) |
+| `error.tsx`     | Error boundary for that route and its children                       |
+| `not-found.tsx` | Renders when `notFound()` is called or no match is found             |
+| `loading.tsx`   | Suspense fallback shown while loading (SSR/streaming)                |
+| `default.tsx`   | Used with parallel routes (more advanced routing setup)              |
+
+### 2.2 Hierarchy Example
+
+```bash
+/app
+  layout.tsx          → wraps the entire app
+  /dashboard
+    layout.tsx        → wraps everything under /dashboard
+    page.tsx          → renders at /dashboard
+    /settings
+      page.tsx        → renders at /dashboard/settings
+      error.tsx       → handles errors in /dashboard/settings
+```
+
+Each level can override or extend behavior from the parent segment.
 
 ## 3. Layouts in Next.js (`layout.tsx`)
 
