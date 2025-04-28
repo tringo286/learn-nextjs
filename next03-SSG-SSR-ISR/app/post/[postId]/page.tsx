@@ -18,7 +18,7 @@ export async function generateStaticParams() {
   }));
 }
 
-// 🧠 Dynamic SEO metadata per post
+// Dynamic SEO metadata per post
 export async function generateMetadata({ params }: PageProps) {
   const post = await getPost(params.postId);
 
