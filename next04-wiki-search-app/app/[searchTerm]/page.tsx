@@ -7,9 +7,10 @@ type Props = {
   };
 };
 
-export async function generateMetadata({ params: { searchTerm } }: Props) {
+export async function generateMetadata({ params }: Props) {
   //   const wikiData: Promise<SearchResult> = getWikiResults(searchTerm);
   //   const data = await wikiData;
+  const { searchTerm } = await params;
   const data = await getWikiResults(searchTerm);
   const displayTerm = searchTerm.replaceAll("%20", " ");
 
@@ -25,7 +26,8 @@ export async function generateMetadata({ params: { searchTerm } }: Props) {
   };
 }
 
-export default async function SearchResults({ params: { searchTerm } }: Props) {
+export default async function SearchResults({ params }: Props) {
+  const { searchTerm } = await params;
   const wikiData: Promise<SearchResult> = getWikiResults(searchTerm);
   const data = await wikiData;
   const results: Result[] | undefined = data?.query?.pages;
