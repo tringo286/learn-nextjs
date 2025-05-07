@@ -2,27 +2,29 @@
 
 This project is a simple Wiki Search Web Application built using Next.js. It allows users to search Wikipedia directly from the interface and displays a list of search results with summaries and links to full articles.
 
-## Features
+## 1. Features
+
 - Search input with real-time query handling
 - Displays top Wikipedia search results with title and snippet
 - Responsive and clean UI
 - Error and loading states for better UX
 - Modular component-based architecture
 
-## Built With
+## 2. Built With
+
 - Next.js – React framework for server-rendered applications
 - TypeScript – Strongly typed programming language
 - Wikipedia API – To fetch search results
 - Tailwind CSS – For styling
 
-## Project Structure Overview
+## 3. Project Structure Overview
 
 - components/ – Reusable UI components (e.g., Navbar, Search bar, Item cards)
 - lib/ – Utility functions, such as the Wikipedia search API handler
 
-## Notes
+## 4. Notes
 
-### Server Components
+### 4.1 Server Components
 
 **Rendered on the server and sent as static HTML to the browser.**
 
@@ -37,7 +39,7 @@ This project is a simple Wiki Search Web Application built using Next.js. It all
 
 ---
 
- **Cons:**
+**Cons:**
 
 - Cannot use React hooks like `useState`, `useEffect`.
 - Cannot directly handle browser events (e.g., `onClick`).
@@ -55,7 +57,7 @@ export default async function ProductsPage() {
 }
 ```
 
-### Client Components
+### 4.2 Client Components
 
 **Rendered on the client (browser), like traditional React components.**
 
@@ -79,12 +81,16 @@ export default async function ProductsPage() {
 **Example use:**
 
 ```tsx
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function Counter() {
   const [count, setCount] = useState(0);
   return <button onClick={() => setCount(count + 1)}>{count}</button>;
 }
 ```
+
+## 5. Demo
+
+![Demo Image](public/demo.png)
