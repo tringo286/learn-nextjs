@@ -3,6 +3,7 @@ import getUserPosts from "@/lib/getUserPosts";
 import { Suspense } from "react";
 import UserPosts from "./components/UserPosts";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 type Params = {
   params: {
@@ -30,8 +31,8 @@ export default async function UserPage({ params: { userId } }: Params) {
 
   return (
     <>
-      <h2>{user.name}</h2>
-      <br />
+      <Link href='/users' className="text-blue-500 block mb-5">Back to users page</Link>
+      <h2 className="text-3xl mb-5">{user.name}</h2>             
       <Suspense fallback={<h2>Loading ...</h2>}>
         <UserPosts promise={userPostsData} />
       </Suspense>

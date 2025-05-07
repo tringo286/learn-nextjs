@@ -51,3 +51,6 @@ Next.js uses **file-based routing**, and dynamic segments are defined using squa
 | Dynamic | `/post/[postId]/page.tsx` | Preferred for individual content (e.g., blog posts) |
 | Static  | `/post/page.tsx`          | Less flexible, requires manual query parsing for post ID |
 
+## 6. Demo
+
+![Demo Image](public/images/demo.png)
